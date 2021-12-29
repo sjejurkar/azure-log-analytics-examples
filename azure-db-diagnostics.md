@@ -1,6 +1,6 @@
 # Azure DB Diagnostics Queries
 
-# Get all DB authentication events in last 24 hours
+## Get all DB authentication events in last 24 hours
 ```
 AzureDiagnostics
 | where action_name_s  startswith "DATABASE AUTHENTICATION" 
@@ -11,7 +11,7 @@ Category , OperationName, action_name_s, client_ip_s
 | take 100
 ```
 
-# Get all DB logins that failed in last 24 hours
+## Get all DB logins that failed in last 24 hours
 ```
 AzureDiagnostics
 | where action_name_s  startswith "DATABASE AUTHENTICATION FAILED" 
