@@ -8,3 +8,13 @@ AppServiceHTTPLogs
 | project Day, URL, AvgTT, CountReq
 | order by Day asc, URL asc
 ```
+
+## Get POST requests that caused HTTP 500 errors
+```
+AppServiceHTTPLogs
+| where ScStatus == 500
+| where CsMethod == "POST"
+| project TimeGenerated, CsUriStem, CsMethod, ScStatus, ScSubStatus, CIp, UserAgent
+| order by TimeGenerated desc
+```
+
