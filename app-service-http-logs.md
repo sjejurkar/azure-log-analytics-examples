@@ -18,3 +18,10 @@ AppServiceHTTPLogs
 | order by TimeGenerated desc
 ```
 
+## Get count of requests for a specific URL with one minute interval
+```
+AppServiceHTTPLogs
+| where CsUriStem == '/my/url/path'
+| summarize brew_count = count() by bin(TimeGenerated,1m)
+| order by bin(TimeGenerated,1m) desc
+```
